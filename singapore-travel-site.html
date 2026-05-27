@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>2026 新加坡旅遊</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
+
       :root {
-        --bg: #f5f8f5;
-        --surface: #ffffff;
-        --soft: #edf4ef;
-        --line: #c8d2cc;
-        --text: #16201c;
-        --muted: #53635c;
-        --primary: #176b5f;
-        --primary-2: #238172;
-        --accent: #c44f32;
-        --accent-soft: #f7d8c9;
-        --blue: #2d6476;
-        --shadow: 0 16px 40px rgba(22, 32, 28, 0.12);
+        --bg: #dbe6f4;
+        --surface: #edf3ff;
+        --surface-strong: #ffffff;
+        --soft: #dfe9fa;
+        --line: #c1cbe0;
+        --text: #111827;
+        --muted: #4b5563;
+        --primary: #8b5cf6;
+        --primary-2: #7c3aed;
+        --secondary: #065f46;
+        --tertiary: #0d9488;
+        --accent: #0d9488;
+        --accent-soft: #e7ddff;
+        --blue: #4b5563;
+        --shadow: 0 18px 44px rgba(47, 66, 96, 0.16);
       }
 
       * {
@@ -26,9 +31,12 @@
 
       body {
         margin: 0;
-        background: var(--bg);
+        background:
+          radial-gradient(circle at top left, rgba(139, 92, 246, 0.16), transparent 28rem),
+          linear-gradient(180deg, #dbe6f4 0%, #eef4ff 58%, #dbe6f4 100%);
         color: var(--text);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
       }
 
       a {
@@ -50,9 +58,10 @@
         justify-content: space-between;
         height: 64px;
         padding: 0 16px;
-        border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(139, 92, 246, 0.16);
+        background: rgba(237, 243, 255, 0.88);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 8px 26px rgba(47, 66, 96, 0.08);
       }
 
       .brand {
@@ -93,7 +102,8 @@
         position: relative;
         min-height: 310px;
         overflow: hidden;
-        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 18px;
         box-shadow: var(--shadow);
       }
 
@@ -109,7 +119,9 @@
         position: absolute;
         inset: 0;
         content: "";
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.08));
+        background:
+          linear-gradient(to top, rgba(17, 24, 39, 0.88), rgba(76, 29, 149, 0.38), rgba(13, 148, 136, 0.1)),
+          linear-gradient(120deg, rgba(139, 92, 246, 0.42), transparent 56%);
       }
 
       .hero-content {
@@ -128,8 +140,9 @@
         align-items: center;
         margin-bottom: 12px;
         padding: 6px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.16);
+        background: rgba(139, 92, 246, 0.32);
         font-size: 12px;
         font-weight: 900;
       }
@@ -139,6 +152,7 @@
         font-size: clamp(32px, 7vw, 58px);
         line-height: 1;
         letter-spacing: 0;
+        text-wrap: balance;
       }
 
       .hero p {
@@ -159,10 +173,10 @@
       .quick-card,
       .card,
       .panel {
-        border: 1px solid var(--line);
-        border-radius: 12px;
+        border: 1px solid rgba(193, 203, 224, 0.82);
+        border-radius: 18px;
         background: var(--surface);
-        box-shadow: 0 1px 2px rgba(22, 32, 28, 0.06);
+        box-shadow: 0 1px 2px rgba(47, 66, 96, 0.06);
       }
 
       .quick-card {
@@ -171,12 +185,13 @@
         padding: 18px;
         color: var(--text);
         text-align: left;
+        background: linear-gradient(180deg, #edf3ff, #e5edf9);
         transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       }
 
       .quick-card:hover {
         border-color: var(--primary);
-        box-shadow: 0 10px 24px rgba(22, 32, 28, 0.1);
+        box-shadow: 0 14px 30px rgba(139, 92, 246, 0.18);
         transform: translateY(-2px);
       }
 
@@ -187,7 +202,7 @@
         place-items: center;
         margin-bottom: 12px;
         border-radius: 999px;
-        background: var(--soft);
+        background: var(--accent-soft);
         color: var(--primary);
         font-size: 22px;
         font-weight: 900;
@@ -219,7 +234,7 @@
         padding: 6px 10px;
         border-radius: 999px;
         background: var(--accent-soft);
-        color: #71301f;
+        color: var(--primary-2);
         font-size: 12px;
         font-weight: 900;
       }
@@ -285,7 +300,7 @@
       .rule {
         position: relative;
         height: 1px;
-        background: var(--line);
+        background: linear-gradient(90deg, var(--secondary), var(--primary), var(--tertiary));
       }
 
       .rule::after {
@@ -294,7 +309,7 @@
         left: 50%;
         padding: 0 8px;
         content: "✈";
-        background: white;
+        background: var(--surface);
         color: var(--primary);
         transform: translate(-50%, -50%);
       }
@@ -334,7 +349,8 @@
       .tag {
         padding: 7px 9px;
         border-radius: 8px;
-        background: var(--soft);
+        background: #dce7f8;
+        color: var(--muted);
         font-size: 12px;
         font-weight: 850;
       }
@@ -348,12 +364,21 @@
         min-height: 44px;
         margin-top: 16px;
         border: 0;
-        border-radius: 10px;
+        border-radius: 12px;
         background: var(--primary);
         color: white;
         font-weight: 900;
         text-decoration: none;
         cursor: pointer;
+        box-shadow: 0 10px 22px rgba(139, 92, 246, 0.24);
+        transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .map-link:hover,
+      .primary-button:hover {
+        background: var(--primary-2);
+        box-shadow: 0 14px 28px rgba(139, 92, 246, 0.3);
+        transform: translateY(-1px);
       }
 
       .timeline-header {
@@ -363,7 +388,7 @@
         margin: -20px -16px 16px;
         padding: 16px;
         border-bottom: 1px solid var(--line);
-        background: rgba(245, 248, 245, 0.95);
+        background: rgba(219, 230, 244, 0.92);
         backdrop-filter: blur(12px);
       }
 
@@ -377,10 +402,21 @@
         height: 44px;
         margin-top: 12px;
         padding: 0 12px;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: white;
+        border: 1px solid #b9c3d6;
+        border-radius: 12px;
+        background: #eaf1fc;
+        color: var(--text);
         outline: none;
+        transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      .search:focus,
+      .password:focus,
+      label input:focus,
+      label textarea:focus {
+        border-color: var(--primary);
+        background: #f7faff;
+        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.14);
       }
 
       .day-nav {
@@ -396,11 +432,18 @@
         padding: 9px 13px;
         border: 1px solid var(--line);
         border-radius: 999px;
-        background: white;
+        background: #edf3ff;
         color: var(--muted);
         font-size: 12px;
         font-weight: 900;
         text-decoration: none;
+        transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+      }
+
+      .day-nav a:hover {
+        border-color: var(--primary);
+        background: var(--accent-soft);
+        color: var(--primary-2);
       }
 
       .day {
@@ -428,7 +471,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 12px 16px;
-        background: var(--soft);
+        background: linear-gradient(90deg, rgba(139, 92, 246, 0.14), rgba(13, 148, 136, 0.1));
         color: var(--primary);
         font-weight: 900;
       }
@@ -459,9 +502,10 @@
 
       .event {
         padding: 12px;
-        border: 1px solid rgba(23, 107, 95, 0.16);
-        border-radius: 10px;
-        background: var(--soft);
+        border: 1px solid rgba(139, 92, 246, 0.18);
+        border-radius: 12px;
+        background: #e7effd;
+        box-shadow: inset 3px 0 0 var(--primary);
       }
 
       .event h4 {
@@ -487,7 +531,7 @@
       .meta {
         padding: 5px 7px;
         border-radius: 7px;
-        background: white;
+        background: var(--surface-strong);
         color: var(--muted);
         font-size: 11px;
         font-weight: 900;
@@ -512,7 +556,7 @@
         place-items: center;
         margin: 0 auto 18px;
         border-radius: 999px;
-        background: var(--primary);
+        background: linear-gradient(135deg, var(--primary), var(--tertiary));
         color: white;
         font-size: 32px;
         font-weight: 900;
@@ -534,8 +578,9 @@
         height: 46px;
         margin-top: 10px;
         padding: 0 12px;
-        border: 1px solid var(--line);
-        border-radius: 10px;
+        border: 1px solid #b9c3d6;
+        border-radius: 12px;
+        background: #eaf1fc;
         text-align: center;
         letter-spacing: 0.12em;
         outline: none;
@@ -579,9 +624,9 @@
       label input,
       label textarea {
         width: 100%;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: white;
+        border: 1px solid #b9c3d6;
+        border-radius: 12px;
+        background: #eaf1fc;
         color: var(--text);
         outline: none;
       }
@@ -607,8 +652,9 @@
         justify-content: space-around;
         padding: 12px 14px;
         border-top: 1px solid var(--line);
-        background: white;
-        box-shadow: 0 -10px 24px rgba(22, 32, 28, 0.08);
+        background: rgba(237, 243, 255, 0.94);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 -12px 28px rgba(47, 66, 96, 0.12);
       }
 
       .nav-button {
@@ -627,8 +673,9 @@
       }
 
       .nav-button.active {
-        background: var(--accent-soft);
-        color: #71301f;
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 8px 18px rgba(139, 92, 246, 0.32);
       }
 
       @media (min-width: 760px) {
