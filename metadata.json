@@ -1,0 +1,6 @@
+{
+  "name": "2026 Singapore Travel",
+  "description": "A beautifully designed Singapore travel companion featuring daily itineraries, flight summaries, hotel information, and secure passenger details.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
