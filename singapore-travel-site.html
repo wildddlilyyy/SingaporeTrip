@@ -40,7 +40,7 @@
           </section>
 
           <section id="hotel">
-            <div class="section-title"><strong>飯店資訊</strong><span class="pill">2 晚</span></div>
+            <div class="section-title"><strong>飯店資訊</strong><span class="pill">3 晚</span></div>
             <article class="card hotel-card">
               <img alt="萬態雨林悅榕庄" src="images/madai.jpg" />
               <div class="hotel-body">
@@ -48,7 +48,7 @@
                 <div class="muted">Mandai Rainforest Resort by Banyan Tree</div>
                 <div class="hotel-dates">
                   <div><div class="muted">入住</div><strong>2026/7/22</strong></div>
-                  <div><div class="muted">退房</div><strong>2026/7/24</strong></div>
+                  <div><div class="muted">退房</div><strong>2026/7/25</strong></div>
                 </div>
                 <div class="tags">
                   <span class="tag">雨林度假村</span>
@@ -155,10 +155,11 @@
           weekday: "三",
           title: "抵達新加坡",
           events: [
-            { time: "07:00", end: "08:00", label: "前往桃園機場", desc: "預留報到、托運行李與安檢時間。", location: "桃園機場" },
-            { time: "09:30", end: "14:00", label: "長榮航空 BR215", desc: "09:25 桃園機場起飛，13:55 抵達新加坡樟宜機場。", note: "長榮航空樟宜常用 T3；實際航廈以航班通知為準" },
+            { time: "07:00", end: "08:30", label: "桃園機場 T2 報到", desc: "旅行社提醒 06:55 前抵達長榮櫃檯；此段保留報到、托運與安檢緩衝。", location: "桃園機場 Terminal 2" },
+            { time: "08:30", end: "09:00", label: "候機與登機準備", desc: "確認登機門、補水、整理隨身包與小孩用品。", location: "桃園機場 Terminal 2" },
+            { time: "09:00", end: "14:00", label: "長榮航空 BR215", desc: "09:25 桃園機場 T2 起飛，13:55 抵達新加坡樟宜機場 T3。", note: "飛行時間 04:30；免費行李每人 1PC" },
             { time: "14:00", end: "15:00", label: "T3 入境與領取行李", desc: "完成入境、領行李、確認網路與交通方式。", location: "樟宜機場 Terminal 3" },
-            { time: "15:00", end: "15:30", label: "前往星耀樟宜", desc: "從 T3 依指標步行前往 Jewel Changi Airport，先把行李寄放或保持輕便。", location: "Jewel Changi Airport" },
+            { time: "15:00", end: "15:30", label: "前往星耀樟宜與寄放行李", desc: "從 T3 依指標步行前往 Jewel Changi Airport，若行李太多先寄放。", location: "Jewel Changi Airport" },
             { time: "15:30", end: "16:30", label: "HSBC Rain Vortex 拍照", desc: "先看瀑布，從低樓層開始拍照，再一層一層往上散步。", location: "星耀樟宜" },
             { time: "16:30", end: "17:30", label: "星耀樟宜散步逛逛", desc: "沿著 Shiseido Forest Valley 慢慢逛，視體力補拍瀑布不同樓層角度。" },
             { time: "17:30", end: "18:30", label: "星耀樟宜晚餐", desc: "第一天晚餐安排在星耀樟宜完成，吃完再前往飯店。", location: "Jewel Changi Airport" },
@@ -172,11 +173,12 @@
           weekday: "四",
           title: "新加坡動物園",
           events: [
-            { time: "08:00", end: "08:30", label: "飯店早餐", desc: "出發前補水、確認門票與防曬用品。" },
-            { time: "09:00", end: "12:00", label: "新加坡動物園", desc: "上午安排重點展區與動物互動體驗。", location: "Singapore Zoo", note: "可補充表演時間與必看區域" },
-            { time: "12:00", end: "13:00", label: "園區午餐", desc: "中午在園區或附近用餐，保留下午體力。" },
-            { time: "13:00", end: "17:00", label: "新加坡動物園下午行程", desc: "繼續園區參觀，視體力調整散步路線。", location: "Singapore Zoo" },
-            { time: "17:30", end: "19:00", label: "回飯店休息", desc: "整理照片與隔日飛禽公園資料。", location: "萬態雨林悅榕庄" }
+            { time: "07:30", end: "08:30", label: "飯店早餐與出發準備", desc: "確認動物園門票、防曬、防蚊、雨具與水壺。", location: "萬態雨林悅榕庄" },
+            { time: "08:30", end: "11:30", label: "新加坡動物園上午行程", desc: "票券有效時間 08:30-17:00，上午先安排重點展區與動物互動體驗。", location: "Singapore Zoo", note: "2 位成人、2 位兒童；Booking Code D0DE 8674" },
+            { time: "11:30", end: "13:00", label: "園區午餐與補水", desc: "中午在園區或附近用餐，保留下午體力。" },
+            { time: "13:00", end: "17:00", label: "新加坡動物園下午行程", desc: "繼續園區參觀，視體力調整散步路線，17:00 前完成離園。", location: "Singapore Zoo" },
+            { time: "17:00", end: "17:30", label: "返回飯店", desc: "回萬態雨林悅榕庄休息、整理照片。", location: "萬態雨林悅榕庄" },
+            { time: "18:00", end: "20:00", label: "晚餐與休息", desc: "保留彈性晚餐時間，確認隔日飛禽公園與好奇心之灣票券。" }
           ]
         },
         {
@@ -185,11 +187,14 @@
           weekday: "五",
           title: "飛禽公園與好奇心之灣",
           events: [
-            { time: "08:30", end: "09:00", label: "退房準備", desc: "確認行李寄放、票券、雨具與水壺。" },
-            { time: "09:00", end: "12:00", label: "飛禽公園", desc: "安排鳥類展區、表演與步行路線。", location: "Bird Paradise" },
-            { time: "12:00", end: "13:00", label: "午餐與移動緩衝", desc: "保留用餐、補水與移動時間。" },
-            { time: "13:00", end: "16:30", label: "好奇心之灣", desc: "互動探索與親子活動時間。", location: "Curiosity Cove" },
-            { time: "17:00", end: "18:00", label: "晚間交通安排", desc: "依後續住宿或晚餐地點補充交通方式。" }
+            { time: "07:30", end: "08:30", label: "飯店早餐與出發準備", desc: "確認飛禽公園門票、好奇心之灣電子票、雨具與水壺。", location: "萬態雨林悅榕庄" },
+            { time: "08:30", end: "09:00", label: "前往飛禽公園", desc: "預留從飯店移動到 Bird Paradise 入口與驗票時間。", location: "Mandai Wildlife Reserve" },
+            { time: "09:00", end: "11:30", label: "飛禽公園上午行程", desc: "票券有效時間 09:00-17:00，上午安排鳥類展區與步行路線。", location: "Bird Paradise", note: "2 位成人、2 位兒童；Booking Code F7D0 D358" },
+            { time: "11:30", end: "13:00", label: "午餐與補水", desc: "在園區用餐，保留小孩休息與移動緩衝。" },
+            { time: "13:00", end: "16:30", label: "飛禽公園下午行程", desc: "繼續參觀展區、看表演，16:30 左右開始往好奇心之灣移動。", location: "Bird Paradise" },
+            { time: "16:30", end: "17:30", label: "移動與好奇心之灣報到", desc: "確認電子票，準備 17:30 入場。", location: "Curiosity Cove" },
+            { time: "17:30", end: "18:30", label: "好奇心之灣", desc: "指定 17:30 入場，最多遊玩 1 小時，18:30 離開。", location: "Curiosity Cove", note: "訂單編號 6316552" },
+            { time: "18:30", end: "20:00", label: "晚餐與回飯店", desc: "結束後安排晚餐，返回萬態雨林悅榕庄休息。", location: "萬態雨林悅榕庄" }
           ]
         },
         {
@@ -198,15 +203,16 @@
           weekday: "六",
           title: "返台日",
           events: [
-            { time: "09:00", end: "10:30", label: "行李與最後確認", desc: "確認護照、票券、充電器、伴手禮與退稅資料。" },
-            { time: "11:30", end: "12:00", label: "前往樟宜機場 T3", desc: "長榮航空樟宜常用 Terminal 3，先確認 BR216 報到櫃台與航廈資訊。", location: "樟宜機場 Terminal 3" },
-            { time: "12:00", end: "12:40", label: "BR216 報到與托運", desc: "完成報到、托運行李、整理隨身包。若時間充裕，再進入管制區採買。", note: "實際櫃台與登機門以機場螢幕為準" },
+            { time: "09:00", end: "10:30", label: "早餐、行李與最後確認", desc: "確認護照、電子機票、票券、充電器、伴手禮與退稅資料。", location: "萬態雨林悅榕庄" },
+            { time: "10:30", end: "11:30", label: "飯店退房與前往機場", desc: "辦理退房，從萬態雨林悅榕庄前往樟宜機場 Terminal 3。", location: "Mandai → 樟宜機場 T3" },
+            { time: "11:30", end: "12:00", label: "抵達樟宜機場 T3", desc: "長榮航空 BR216 由樟宜機場 T3 出發，確認報到櫃台與航班螢幕。", location: "樟宜機場 Terminal 3" },
+            { time: "12:00", end: "12:40", label: "BR216 報到與托運", desc: "完成報到、托運行李、整理隨身包。", note: "實際櫃台與登機門以機場螢幕為準" },
             { time: "12:40", end: "13:10", label: "出境安檢", desc: "通過出境與安檢後進入 T3 管制區，準備免稅採買。" },
             { time: "13:10", end: "13:50", label: "免稅採買 BACHA Coffee", desc: "前往 BACHA Coffee T3 Transit Zone，購買咖啡或禮盒。", location: "T3 Transit Zone", note: "BACHA 官方列有 T3 管制區門市" },
             { time: "13:50", end: "14:20", label: "免稅採買虎標", desc: "找藥妝 / 便利商店 / iShopChangi 可取貨店，購買 Tiger Balm 虎標商品。", note: "先買小罐、貼布或伴手禮組合，注意液體容量" },
             { time: "14:20", end: "14:50", label: "候機與補給", desc: "確認登機門、裝水、上洗手間，把免稅品整理進隨身行李。" },
             { time: "14:50", end: "15:20", label: "前往登機門", desc: "確認 BR216 登機門與登機時間，準備登機。" },
-            { time: "15:30", end: "20:00", label: "長榮航空 BR216", desc: "15:20 新加坡起飛，20:00 抵達桃園機場。", note: "長榮航空樟宜常用 T3；飛行時間 04:40" }
+            { time: "15:20", end: "20:00", label: "長榮航空 BR216", desc: "15:20 新加坡樟宜機場 T3 起飛，20:00 抵達桃園機場 T2。", note: "飛行時間 04:40；免費行李每人 1PC" }
           ]
         }
       ];
