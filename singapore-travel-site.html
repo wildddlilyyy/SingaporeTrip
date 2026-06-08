@@ -88,51 +88,49 @@
           </form>
         </div>
 
-        <form id="passenger-form" style="display: none;">
+        <div id="passenger-form" style="display: none;">
           <div class="panel" style="margin-bottom: 18px; background: var(--accent-soft);">
-            <strong>已解鎖旅客資訊</strong>
-            <div class="muted">離開此頁後會自動鎖定，避免敏感資訊留在畫面上。</div>
+            <strong>已解鎖雲端附件入口</strong>
+            <div class="muted">敏感資料不放在網站內，請到 Google Drive 資料夾查看附件；離開此頁後會自動鎖定。</div>
           </div>
-          <div class="passenger-grid">
-            <section class="panel">
-              <h3>護照與身份資料</h3>
-              <div class="fields two">
-                <label><span>姓名</span><input name="name" /></label>
-                <label><span>護照號碼</span><input name="passportNo" /></label>
-                <label><span>護照效期</span><input name="expiry" /></label>
-                <label><span>出生日期</span><input name="dob" /></label>
-              </div>
-            </section>
-            <section class="panel">
-              <h3>緊急聯絡人</h3>
-              <div class="fields">
-                <label><span>姓名</span><input name="emergencyName" /></label>
-                <label><span>關係</span><input name="emergencyRel" /></label>
-                <label><span>電話</span><input name="emergencyPhone" /></label>
-              </div>
-            </section>
-            <section class="panel">
-              <h3>聯絡方式</h3>
-              <div class="fields two">
-                <label><span>電話</span><input name="phone" /></label>
-                <label><span>Email</span><input name="email" /></label>
-              </div>
-            </section>
-            <section class="panel">
-              <h3>保險資訊</h3>
-              <div class="fields">
-                <label><span>保險公司</span><input name="insuranceCompany" /></label>
-                <label><span>保單號碼</span><input name="insuranceNo" /></label>
-                <label><span>海外急難電話</span><input name="insurancePhone" /></label>
-              </div>
-            </section>
-            <section class="panel">
-              <h3>其他重要備註</h3>
-              <label><span>備註</span><textarea name="notes"></textarea></label>
-            </section>
+          <div class="document-grid">
+            <a class="document-card primary-document" href="https://drive.google.com/drive/folders/1MRQGVwNV8cXfE1VRXCvHnrw5nnKSFvqU" target="_blank" rel="noopener">
+              <span>Google Drive</span>
+              <strong>SingaporeTrip 2026 新加坡旅遊資料</strong>
+              <small>所有正式附件與行程資料統一放在這裡</small>
+            </a>
+            <a class="document-card" href="https://docs.google.com/document/d/10rHgCUbUEw4hRUUiK5QX6iI7aib-VQlppWzj1sm6g7Y" target="_blank" rel="noopener">
+              <span>行程總覽</span>
+              <strong>SingaporeTrip 2026 行程資料總覽</strong>
+              <small>乾淨版行程、航班、飯店與出發提醒</small>
+            </a>
+            <a class="document-card" href="https://drive.google.com/file/d/1mLCuMrh_u-1wYqhC8io_Hvh2hLGnLgKm/view" target="_blank" rel="noopener">
+              <span>旅行社主資料</span>
+              <strong>自由行訂購明細與飯店資料</strong>
+              <small>含飯店、訂單窗口、注意事項</small>
+            </a>
+            <a class="document-card" href="https://drive.google.com/file/d/1yBDxHM3Lzq4VJCMoI28yC2ZhYOKAIRRK/view" target="_blank" rel="noopener">
+              <span>電子機票</span>
+              <strong>BR215 / BR216 電子機票</strong>
+              <small>航班、航廈、行李與訂位資訊</small>
+            </a>
+            <a class="document-card" href="https://drive.google.com/file/d/15romfFph7Gt1l-bn1l_Tps165Qrjg0lo/view" target="_blank" rel="noopener">
+              <span>園區門票</span>
+              <strong>新加坡動物園門票</strong>
+              <small>2026/07/23 08:30-17:00</small>
+            </a>
+            <a class="document-card" href="https://drive.google.com/file/d/1RsKl0UY0LiS2iujVmXRzG0qdo_qaWqXj/view" target="_blank" rel="noopener">
+              <span>園區門票</span>
+              <strong>飛禽公園門票</strong>
+              <small>2026/07/24 09:00-17:00</small>
+            </a>
+            <a class="document-card" href="https://drive.google.com/file/d/1bVW63LL5VkK_KnhfHT43mEsOEZvYWI8P/view" target="_blank" rel="noopener">
+              <span>票券</span>
+              <strong>好奇心之灣電子票</strong>
+              <small>2026/07/24 17:30 入場</small>
+            </a>
           </div>
-          <button class="primary-button" type="submit" style="max-width: 220px; margin-left: auto;">儲存旅客資訊</button>
-        </form>
+        </div>
       </section>
     </main>
 
@@ -143,7 +141,8 @@
     </nav>
 
     <script>
-      const PASSCODE = "sg2026";
+      const PASSCODE = "LiamNeeson/017";
+      localStorage.removeItem("sg_trip_passenger");
       const flights = [
         { type: "去程", date: "2026/7/22", airline: "長榮航空", no: "BR215", from: "桃園機場", fromCode: "TPE", fromTerminal: "T2", to: "新加坡樟宜機場", toCode: "SIN", toTerminal: "T3", depart: "09:25", arrive: "13:55", duration: "04:30" },
         { type: "回程", date: "2026/7/25", airline: "長榮航空", no: "BR216", from: "新加坡樟宜機場", fromCode: "SIN", fromTerminal: "T3", to: "桃園機場", toCode: "TPE", toTerminal: "T2", depart: "15:20", arrive: "20:00", duration: "04:40" }
@@ -218,22 +217,6 @@
         { label: "下午", range: "13:00 - 17:00", start: 13, end: 17 },
         { label: "晚上", range: "17:00 - 00:00", start: 17, end: 24 }
       ];
-
-      const passengerDefaults = {
-        name: "尚未填寫",
-        passportNo: "尚未填寫",
-        expiry: "尚未填寫",
-        dob: "尚未填寫",
-        phone: "尚未填寫",
-        email: "尚未填寫",
-        emergencyName: "尚未填寫",
-        emergencyRel: "尚未填寫",
-        emergencyPhone: "尚未填寫",
-        insuranceCompany: "尚未填寫",
-        insuranceNo: "尚未填寫",
-        insurancePhone: "尚未填寫",
-        notes: "可填寫飲食禁忌、藥物需求、重要提醒或同行者備註。"
-      };
 
       let unlocked = false;
       let activeItineraryDay = 1;
@@ -366,24 +349,6 @@
         unlocked = true;
         document.querySelector("#locked").style.display = "none";
         document.querySelector("#passenger-form").style.display = "block";
-        fillPassengerForm();
-      }
-
-      function getPassenger() {
-        try {
-          return { ...passengerDefaults, ...JSON.parse(localStorage.getItem("sg_trip_passenger") || "{}") };
-        } catch {
-          return passengerDefaults;
-        }
-      }
-
-      function fillPassengerForm() {
-        const passenger = getPassenger();
-        const form = document.querySelector("#passenger-form");
-        Object.entries(passenger).forEach(([key, value]) => {
-          const field = form.elements[key];
-          if (field) field.value = value;
-        });
       }
 
       document.querySelectorAll("[data-nav]").forEach(button => button.addEventListener("click", () => showView(button.dataset.nav)));
@@ -402,13 +367,6 @@
           input.value = "";
         }
       });
-      document.querySelector("#passenger-form").addEventListener("submit", event => {
-        event.preventDefault();
-        const data = Object.fromEntries(new FormData(event.currentTarget).entries());
-        localStorage.setItem("sg_trip_passenger", JSON.stringify(data));
-        alert("旅客資訊已儲存");
-      });
-
       renderFlights();
       renderItinerary();
     </script>

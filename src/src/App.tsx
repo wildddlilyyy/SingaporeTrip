@@ -49,17 +49,16 @@ export default function App() {
   });
 
   const [passenger, setPassenger] = useState<PassengerInfo>(() => {
-    try {
-      const saved = localStorage.getItem('sg_trip_passenger');
-      return saved ? JSON.parse(saved) : DEFAULT_PASSENGER;
-    } catch {
-      return DEFAULT_PASSENGER;
-    }
+    return DEFAULT_PASSENGER;
   });
 
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
 
   // Sync to localStorage
+  useEffect(() => {
+    localStorage.removeItem('sg_trip_passenger');
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('sg_trip_flights', JSON.stringify(flights));
   }, [flights]);
@@ -72,13 +71,9 @@ export default function App() {
     localStorage.setItem('sg_trip_itinerary', JSON.stringify(itinerary));
   }, [itinerary]);
 
-  useEffect(() => {
-    localStorage.setItem('sg_trip_passenger', JSON.stringify(passenger));
-  }, [passenger]);
-
   // Lock passcode validation check
   const handleUnlock = (password: string): boolean => {
-    if (password === '12345678') {
+    if (password === 'LiamNeeson/017') {
       setIsUnlocked(true);
       return true;
     }

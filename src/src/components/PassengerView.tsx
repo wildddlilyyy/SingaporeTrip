@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import {
-  AlertOctagon,
-  Badge,
-  FileText,
-  KeyRound,
-  LockKeyhole,
-  Mail,
-  Phone,
-  Save,
-  ShieldAlert,
-  ShieldCheck,
-  UserRound
-} from 'lucide-react';
+import { AlertOctagon, FileText, KeyRound, LockKeyhole, ShieldCheck } from 'lucide-react';
 import { PassengerInfo } from '../types';
 
 interface PassengerViewProps {
@@ -23,10 +11,38 @@ interface PassengerViewProps {
   onLock: () => void;
 }
 
-export default function PassengerView({ passenger, onUpdatePassenger, isUnlocked, onUnlock }: PassengerViewProps) {
+const driveFolderUrl = 'https://drive.google.com/drive/folders/1MRQGVwNV8cXfE1VRXCvHnrw5nnKSFvqU';
+const itineraryDocUrl = 'https://docs.google.com/document/d/10rHgCUbUEw4hRUUiK5QX6iI7aib-VQlppWzj1sm6g7Y';
+const hotelPdfUrl = 'https://drive.google.com/file/d/1mLCuMrh_u-1wYqhC8io_Hvh2hLGnLgKm/view';
+const ticketPdfUrl = 'https://drive.google.com/file/d/1yBDxHM3Lzq4VJCMoI28yC2ZhYOKAIRRK/view';
+const zooPdfUrl = 'https://drive.google.com/file/d/15romfFph7Gt1l-bn1l_Tps165Qrjg0lo/view';
+const birdPdfUrl = 'https://drive.google.com/file/d/1RsKl0UY0LiS2iujVmXRzG0qdo_qaWqXj/view';
+const curiosityPdfUrl = 'https://drive.google.com/file/d/1bVW63LL5VkK_KnhfHT43mEsOEZvYWI8P/view';
+
+const documents = [
+  {
+    label: 'Google Drive',
+    title: 'SingaporeTrip 2026 新加坡旅遊資料',
+    note: '所有正式附件與行程資料統一放在這裡',
+    url: driveFolderUrl,
+    primary: true
+  },
+  {
+    label: '行程總覽',
+    title: 'SingaporeTrip 2026 行程資料總覽',
+    note: '乾淨版行程、航班、飯店與出發提醒',
+    url: itineraryDocUrl
+  },
+  { label: '旅行社主資料', title: '自由行訂購明細與飯店資料', note: '含飯店、訂單窗口、注意事項', url: hotelPdfUrl },
+  { label: '電子機票', title: 'BR215 / BR216 電子機票', note: '航班、航廈、行李與訂位資訊', url: ticketPdfUrl },
+  { label: '園區門票', title: '新加坡動物園門票', note: '2026/07/23 08:30-17:00', url: zooPdfUrl },
+  { label: '園區門票', title: '飛禽公園門票', note: '2026/07/24 09:00-17:00', url: birdPdfUrl },
+  { label: '票券', title: '好奇心之灣電子票', note: '2026/07/24 17:30 入場', url: curiosityPdfUrl }
+];
+
+export default function PassengerView({ isUnlocked, onUnlock }: PassengerViewProps) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [draft, setDraft] = useState<PassengerInfo>(passenger);
 
   const handleUnlock = (event: React.FormEvent) => {
     event.preventDefault();
@@ -34,17 +50,11 @@ export default function PassengerView({ passenger, onUpdatePassenger, isUnlocked
 
     if (onUnlock(password)) {
       setPassword('');
-      setDraft(passenger);
       return;
     }
 
     setPassword('');
     setError('密碼不正確，請重新輸入。');
-  };
-
-  const handleSave = (event: React.FormEvent) => {
-    event.preventDefault();
-    onUpdatePassenger(draft);
   };
 
   if (!isUnlocked) {
@@ -61,7 +71,7 @@ export default function PassengerView({ passenger, onUpdatePassenger, isUnlocked
           </div>
           <h2 className="mt-5 text-2xl font-extrabold tracking-tight">旅客資訊已鎖定</h2>
           <p className="mt-2 text-sm font-medium leading-6 text-on-surface-variant">
-            這裡會放護照、聯絡方式、緊急聯絡人與保險資料。每次進入此頁都需要重新輸入密碼。
+            敏感資料不放在網站內。解鎖後只顯示 Google Drive 附件入口。
           </p>
         </div>
 
@@ -97,8 +107,7 @@ export default function PassengerView({ passenger, onUpdatePassenger, isUnlocked
   }
 
   return (
-    <motion.form
-      onSubmit={handleSave}
+    <motion.section
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
@@ -108,92 +117,32 @@ export default function PassengerView({ passenger, onUpdatePassenger, isUnlocked
         <div className="flex items-center gap-3">
           <ShieldCheck className="h-6 w-6" />
           <div>
-            <h2 className="font-extrabold">已解鎖旅客資訊</h2>
-            <p className="mt-0.5 text-xs font-semibold">離開此頁後會自動鎖定，避免敏感資訊留在畫面上。</p>
+            <h2 className="font-extrabold">已解鎖雲端附件入口</h2>
+            <p className="mt-0.5 text-xs font-semibold">敏感資料不放在網站內，請到 Google Drive 資料夾查看附件。</p>
           </div>
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
-        <section className="space-y-6">
-          <Panel icon={Badge} title="護照與身份資料">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Field label="姓名" value={draft.name} onChange={value => setDraft({ ...draft, name: value })} />
-              <Field label="護照號碼" value={draft.passportNo} onChange={value => setDraft({ ...draft, passportNo: value })} />
-              <Field label="護照效期" value={draft.expiry} onChange={value => setDraft({ ...draft, expiry: value })} />
-              <Field label="出生日期" value={draft.dob} onChange={value => setDraft({ ...draft, dob: value })} />
-            </div>
-          </Panel>
-
-          <Panel icon={UserRound} title="聯絡方式">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Field label="電話" value={draft.phone} onChange={value => setDraft({ ...draft, phone: value })} icon={Phone} />
-              <Field label="Email" value={draft.email} onChange={value => setDraft({ ...draft, email: value })} icon={Mail} />
-            </div>
-          </Panel>
-
-          <Panel icon={FileText} title="其他重要備註">
-            <textarea
-              value={draft.notes}
-              onChange={event => setDraft({ ...draft, notes: event.target.value })}
-              className="min-h-28 w-full resize-none rounded-lg border border-outline-variant bg-white px-3 py-2 text-sm font-medium leading-6 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-            />
-          </Panel>
-        </section>
-
-        <section className="space-y-6">
-          <Panel icon={ShieldAlert} title="緊急聯絡人">
-            <div className="space-y-4">
-              <Field label="姓名" value={draft.emergencyName} onChange={value => setDraft({ ...draft, emergencyName: value })} />
-              <Field label="關係" value={draft.emergencyRel} onChange={value => setDraft({ ...draft, emergencyRel: value })} />
-              <Field label="電話" value={draft.emergencyPhone} onChange={value => setDraft({ ...draft, emergencyPhone: value })} />
-            </div>
-          </Panel>
-
-          <Panel icon={ShieldCheck} title="保險資訊">
-            <div className="space-y-4">
-              <Field label="保險公司" value={draft.insuranceCompany} onChange={value => setDraft({ ...draft, insuranceCompany: value })} />
-              <Field label="保單號碼" value={draft.insuranceNo} onChange={value => setDraft({ ...draft, insuranceNo: value })} />
-              <Field label="海外急難電話" value={draft.insurancePhone} onChange={value => setDraft({ ...draft, insurancePhone: value })} />
-            </div>
-          </Panel>
-        </section>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {documents.map(item => (
+          <a
+            key={item.title}
+            href={item.url}
+            target="_blank"
+            rel="noreferrer"
+            className={`grid min-h-36 gap-2 rounded-lg border border-outline-variant bg-white p-5 text-on-surface no-underline shadow-xs transition hover:-translate-y-0.5 hover:border-primary/40 ${
+              item.primary ? 'bg-gradient-to-br from-primary/10 to-secondary/10' : ''
+            }`}
+          >
+            <span className="flex items-center gap-2 text-xs font-extrabold text-primary">
+              <FileText className="h-4 w-4" />
+              {item.label}
+            </span>
+            <strong className="text-lg leading-snug">{item.title}</strong>
+            <small className="text-sm font-semibold leading-6 text-on-surface-variant">{item.note}</small>
+          </a>
+        ))}
       </div>
-
-      <div className="sticky bottom-20 flex justify-end">
-        <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-extrabold text-white shadow-lg transition hover:bg-primary-container">
-          <Save className="h-4 w-4" />
-          儲存旅客資訊
-        </button>
-      </div>
-    </motion.form>
-  );
-}
-
-function Panel({ icon: Icon, title, children }: { icon: typeof Badge; title: string; children: React.ReactNode }) {
-  return (
-    <section className="rounded-xl border border-outline-variant bg-white p-5 shadow-xs">
-      <div className="mb-5 flex items-center gap-2 border-b border-outline-variant pb-3">
-        <Icon className="h-5 w-5 text-primary" />
-        <h3 className="font-extrabold">{title}</h3>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function Field({ label, value, onChange, icon: Icon }: { label: string; value: string; onChange: (value: string) => void; icon?: typeof Phone }) {
-  return (
-    <label className="block">
-      <span className="text-xs font-extrabold text-on-surface-variant">{label}</span>
-      <div className="relative mt-1">
-        {Icon && <Icon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-outline" />}
-        <input
-          value={value}
-          onChange={event => onChange(event.target.value)}
-          className={`h-11 w-full rounded-lg border border-outline-variant bg-white px-3 text-sm font-semibold outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 ${Icon ? 'pl-9' : ''}`}
-        />
-      </div>
-    </label>
+    </motion.section>
   );
 }

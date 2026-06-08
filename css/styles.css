@@ -629,6 +629,51 @@
         gap: 18px;
       }
 
+      .document-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 14px;
+      }
+
+      .document-card {
+        display: grid;
+        gap: 8px;
+        min-height: 142px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        text-decoration: none;
+        box-shadow: var(--shadow);
+      }
+
+      .document-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(139, 92, 246, 0.42);
+      }
+
+      .document-card span {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .document-card strong {
+        font-size: 18px;
+        line-height: 1.35;
+      }
+
+      .document-card small {
+        color: var(--muted);
+        font-weight: 750;
+        line-height: 1.5;
+      }
+
+      .primary-document {
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(13, 148, 136, 0.16)), var(--surface);
+      }
+
       .panel {
         padding: 18px;
       }
