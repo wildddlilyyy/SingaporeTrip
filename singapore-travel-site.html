@@ -29,6 +29,7 @@
         <div class="quick-grid">
           <button class="quick-card" data-nav="itinerary"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 10h16M6 4h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" /></svg></span><strong>每日行程</strong><div class="muted">四天 30 分鐘時間軸</div></button>
           <button class="quick-card" data-nav="info"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" /><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M12 15v2" /></svg></span><strong>旅客資訊</strong><div class="muted">每次查看都要輸入密碼</div></button>
+          <button class="quick-card" data-nav="souvenirs"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9" /><path d="M2 7h20v5H2z" /><path d="M12 22V7" /><path d="M12 7H8.5a2.5 2.5 0 1 1 2.3-3.5L12 7Z" /><path d="M12 7h3.5a2.5 2.5 0 1 0-2.3-3.5L12 7Z" /></svg></span><strong>伴手禮指南</strong><div class="muted">三個賣場推薦排行</div></button>
           <button class="quick-card" data-scroll="flights"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 16 22 8l-8 13-3-7-7-3Z" /><path d="m11 14 4-4" /></svg></span><strong>航班摘要</strong><div class="muted">BR215 / BR216</div></button>
           <button class="quick-card" data-scroll="hotel"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12" /><path d="M9 21v-7h6v7" /><path d="M9 10h.01M15 10h.01" /></svg></span><strong>飯店資訊</strong><div class="muted">萬態雨林悅榕庄</div></button>
         </div>
@@ -74,6 +75,20 @@
         </div>
         <div class="day-nav" id="day-nav"></div>
         <div id="itinerary-list"></div>
+      </section>
+
+      <section class="view" id="souvenirs-view">
+        <div class="timeline-header">
+          <div class="timeline-header-inner">
+            <div>
+              <h2>伴手禮指南</h2>
+              <div class="muted">旅遊實用推薦排行，依購買地點分成星耀樟宜、Mustafa Centre 與便利商店。</div>
+            </div>
+            <span class="pill">每區 10 項</span>
+          </div>
+        </div>
+        <div class="day-nav" id="souvenir-nav"></div>
+        <div id="souvenir-guide"></div>
       </section>
 
       <section class="view" id="info-view">
@@ -137,6 +152,7 @@
     <nav class="bottom-nav">
       <button class="nav-button active" data-nav="home" type="button">首頁</button>
       <button class="nav-button" data-nav="itinerary" type="button">行程</button>
+      <button class="nav-button" data-nav="souvenirs" type="button">伴手禮</button>
       <button class="nav-button" data-nav="info" type="button">旅客</button>
     </nav>
 
@@ -224,8 +240,83 @@
         { label: "晚上", range: "17:00 - 00:00", start: 17, end: 24 }
       ];
 
+      const souvenirImages = {
+        coffee: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=80",
+        snack: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=900&q=80",
+        souvenir: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=900&q=80",
+        toy: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=900&q=80",
+        medicine: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80",
+        tea: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=80",
+        spread: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80",
+        bag: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=80",
+        clothes: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=900&q=80",
+        market: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=900&q=80",
+        chocolate: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=900&q=80",
+        spice: "https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=900&q=80",
+        toiletries: "https://images.unsplash.com/photo-1585386959984-a41552231658?auto=format&fit=crop&w=900&q=80",
+        luggage: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80",
+        convenience: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=900&q=80",
+        candy: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=900&q=80",
+        travel: "https://images.unsplash.com/photo-1530396333989-24c5b8f805dd?auto=format&fit=crop&w=900&q=80"
+      };
+
+      const souvenirGuides = [
+        {
+          id: "jewel",
+          title: "星耀樟宜",
+          subtitle: "適合第一天抵達後先看、最後一天補買，重點放在機場好攜帶與品牌型伴手禮。",
+          products: [
+            { name: "BACHA Coffee 禮盒", category: "食品", image: souvenirImages.coffee, reason: "包裝漂亮、送禮感強，適合放在最後一天免稅採買清單。", tip: "咖啡禮盒體積較大，建議確認隨身行李空間。" },
+            { name: "IRVINS 鹹蛋魚皮 / 零食", category: "食品", image: souvenirImages.snack, reason: "新加坡代表性零食，適合辦公室與親友分享。", tip: "易碎零食建議放在行李上層或手提袋。" },
+            { name: "I LOVE SG 新加坡紀念品", category: "日常用品", image: souvenirImages.souvenir, reason: "有地標與新加坡主題小物，適合一次買齊鑰匙圈、磁鐵、明信片。", tip: "星耀樟宜店鋪資訊顯示每日營業至 22:00，仍以現場為準。" },
+            { name: "Pokemon Center Singapore 商品", category: "玩具", image: souvenirImages.toy, reason: "小朋友接受度高，也很適合收藏型禮物。", tip: "熱門款可能缺貨，看到喜歡的先買。" },
+            { name: "POP MART / 盲盒公仔", category: "玩具", image: souvenirImages.toy, reason: "體積小、好分送，適合給喜歡公仔或盲盒的朋友。", tip: "注意盒數與行李空間，避免買太多。" },
+            { name: "Tiger Balm 虎標", category: "藥品", image: souvenirImages.medicine, reason: "經典新加坡伴手禮，實用且單價好控制。", tip: "膏狀或液體商品請注意容量與托運規定。" },
+            { name: "TWG Tea 茶包禮盒", category: "食品", image: souvenirImages.tea, reason: "品牌辨識度高，適合長輩、主管或正式送禮。", tip: "禮盒易壓傷，建議保留外袋或紙盒保護。" },
+            { name: "Kaya 醬 / 咖椰醬", category: "食品", image: souvenirImages.spread, reason: "最有新加坡早餐感，適合喜歡料理或吐司的人。", tip: "玻璃罐與液體狀食品通常建議托運。" },
+            { name: "新加坡圖案環保袋 / 小包", category: "日常用品", image: souvenirImages.bag, reason: "輕、薄、好塞行李，也能當旅行中臨時收納袋。", tip: "可搭配食品禮盒一起送，會更完整。" },
+            { name: "UNIQLO / 旅用衣物補貨", category: "衣服", image: souvenirImages.clothes, reason: "若天氣或小孩衣物不足，可在星耀樟宜快速補齊。", tip: "衣服不算特色伴手禮，適合當實用補貨。" }
+          ]
+        },
+        {
+          id: "mustafa",
+          title: "Mustafa Centre 24 小時賣場",
+          subtitle: "適合想一次買食品、藥品、日用品與旅行補給；品項多，建議先列清單再進場。",
+          products: [
+            { name: "Tiger Balm 虎標系列", category: "藥品", image: souvenirImages.medicine, reason: "Mustafa 常被旅客當作補買虎標、藥膏與貼布的地方。", tip: "買多件前先確認保存期限與包裝完整。" },
+            { name: "Kaya 醬 / 早餐抹醬", category: "食品", image: souvenirImages.spread, reason: "可買不同品牌與容量，適合拿來做新加坡早餐分享。", tip: "玻璃瓶或液體狀商品請放托運。" },
+            { name: "新加坡即溶咖啡 / 奶茶", category: "食品", image: souvenirImages.coffee, reason: "單包裝好分送，價格彈性也比較大。", tip: "可挑小包裝，避免行李太重。" },
+            { name: "Beryl's / 進口巧克力", category: "食品", image: souvenirImages.chocolate, reason: "好入口、送禮安全，適合買給同事或小朋友。", tip: "新加坡天氣熱，白天移動時避免久放車內。" },
+            { name: "香料包 / 咖哩粉", category: "食品", image: souvenirImages.spice, reason: "很有在地與南洋料理感，適合會下廚的朋友。", tip: "香料味道較重，建議獨立包裝。" },
+            { name: "維他命 / 保健品", category: "藥品", image: souvenirImages.medicine, reason: "選擇多，適合補買家用保健品。", tip: "藥品與保健品入境規定請以台灣海關公告為準。" },
+            { name: "牙膏、洗髮精、旅行補給", category: "日常用品", image: souvenirImages.toiletries, reason: "旅途中臨時缺東西很方便，也可買小包裝回家。", tip: "液體大容量商品建議托運。" },
+            { name: "兒童玩具 / 小車 / 文具", category: "玩具", image: souvenirImages.toy, reason: "品項多、價格帶廣，適合讓小孩挑一件紀念品。", tip: "先設定預算，賣場很容易越逛越多。" },
+            { name: "T-shirt / 平價衣物", category: "衣服", image: souvenirImages.clothes, reason: "可補買旅途衣物，也可找新加坡主題 T-shirt。", tip: "尺寸與版型建議現場確認。" },
+            { name: "行李箱、收納袋、旅行配件", category: "日常用品", image: souvenirImages.luggage, reason: "如果伴手禮買太多，可直接補行李或收納用品。", tip: "買行李箱前先確認航空行李件數與重量。" }
+          ]
+        },
+        {
+          id: "convenience",
+          title: "便利商店",
+          subtitle: "適合臨時補買、晚上補貨、或最後一天只想買小包裝伴手禮。",
+          products: [
+            { name: "7-Eleven / Cheers 限定零食", category: "食品", image: souvenirImages.convenience, reason: "容易買、容易分送，適合最後補幾包。", tip: "看到小包裝組合可優先買，行李更好塞。" },
+            { name: "Milo 即飲 / 包裝飲品", category: "食品", image: souvenirImages.convenience, reason: "東南亞常見飲品，小朋友接受度高。", tip: "飲品容量要注意登機與托運限制。" },
+            { name: "咖椰吐司相關抹醬或餅乾", category: "食品", image: souvenirImages.spread, reason: "比玻璃罐咖椰更輕巧，適合當小禮物。", tip: "優先找獨立包裝，回台分送更方便。" },
+            { name: "辣味薯片 / 魚皮零食", category: "食品", image: souvenirImages.snack, reason: "新加坡零食口味較有記憶點，適合朋友聚會分享。", tip: "膨脹包裝不要壓在行李底層。" },
+            { name: "小包裝巧克力與糖果", category: "食品", image: souvenirImages.candy, reason: "價格好控制，適合大量分送。", tip: "巧克力怕熱，行程中不要久放戶外。" },
+            { name: "Tiger Balm 小包裝", category: "藥品", image: souvenirImages.medicine, reason: "若便利商店有小包裝，可當實用型伴手禮。", tip: "液體與膏狀商品仍要看容量。" },
+            { name: "喉糖 / 薄荷糖", category: "藥品", image: souvenirImages.candy, reason: "輕巧又實用，適合搭飛機與旅途中使用。", tip: "買給小孩前注意口味與年齡標示。" },
+            { name: "濕紙巾、酒精棉片", category: "日常用品", image: souvenirImages.toiletries, reason: "旅途中隨時會用到，也適合補充親子包。", tip: "可買小包裝放隨身包。" },
+            { name: "兒童小玩具 / 貼紙", category: "玩具", image: souvenirImages.toy, reason: "可當旅途中安撫小物，也能送小朋友。", tip: "選不占空間、不容易掉零件的款式。" },
+            { name: "雨衣、口罩、旅行臨時用品", category: "日常用品", image: souvenirImages.travel, reason: "天氣突變或臨時需求時很實用。", tip: "這類商品偏補給，不必買太多。" }
+          ]
+        }
+      ];
+
       let unlocked = false;
       let activeItineraryDay = 1;
+      let activeSouvenirGuide = "jewel";
 
       function slotList() {
         return Array.from({ length: 35 }, (_, index) => {
@@ -336,12 +427,56 @@
           `;
       }
 
+      function renderSouvenirs() {
+        const guide = souvenirGuides.find(item => item.id === activeSouvenirGuide) || souvenirGuides[0];
+        document.querySelector("#souvenir-nav").innerHTML = souvenirGuides.map(item => `
+          <button class="${item.id === activeSouvenirGuide ? "active" : ""}" type="button" data-guide="${item.id}">
+            ${item.title}
+          </button>
+        `).join("");
+
+        document.querySelectorAll("#souvenir-nav button").forEach(button => {
+          button.addEventListener("click", () => {
+            activeSouvenirGuide = button.dataset.guide;
+            renderSouvenirs();
+          });
+        });
+
+        document.querySelector("#souvenir-guide").innerHTML = `
+          <section class="card souvenir-intro">
+            <div>
+              <div class="muted">旅遊實用推薦排行</div>
+              <h3>${guide.title}</h3>
+              <p>${guide.subtitle}</p>
+            </div>
+            <span class="pill">Top 10</span>
+          </section>
+          <section class="souvenir-grid">
+            ${guide.products.map((product, index) => `
+              <article class="card souvenir-card">
+                <img src="${product.image}" alt="${product.name}" loading="lazy" />
+                <div class="souvenir-body">
+                  <div class="souvenir-card-top">
+                    <span class="rank">No. ${index + 1}</span>
+                    <span class="tag">${product.category}</span>
+                  </div>
+                  <h3>${product.name}</h3>
+                  <p>${product.reason}</p>
+                  <div class="souvenir-tip">${product.tip}</div>
+                </div>
+              </article>
+            `).join("")}
+          </section>
+        `;
+      }
+
       function showView(name) {
         if (name !== "info") lockPassenger();
         document.querySelectorAll(".view").forEach(view => view.classList.remove("active"));
         document.querySelector(`#${name}-view`).classList.add("active");
         document.querySelectorAll(".nav-button[data-nav]").forEach(button => button.classList.toggle("active", button.dataset.nav === name));
-        document.querySelector("#page-title").textContent = name === "home" ? "2026 新加坡旅遊" : name === "itinerary" ? "每日行程" : "旅客資訊";
+        const titles = { home: "2026 新加坡旅遊", itinerary: "每日行程", souvenirs: "伴手禮指南", info: "旅客資訊" };
+        document.querySelector("#page-title").textContent = titles[name] || "2026 新加坡旅遊";
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
@@ -375,6 +510,7 @@
       });
       renderFlights();
       renderItinerary();
+      renderSouvenirs();
     </script>
   </body>
 </html>
