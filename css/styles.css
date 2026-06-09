@@ -650,6 +650,27 @@
         line-height: 1.5;
       }
 
+      .store-detail {
+        display: grid;
+        gap: 4px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #e7effd;
+      }
+
+      .store-detail strong {
+        color: var(--primary-2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .store-detail span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+        line-height: 1.55;
+      }
+
       .lock-wrap {
         display: grid;
         min-height: 68vh;
