@@ -325,6 +325,10 @@
       let unlocked = false;
       let activeItineraryDay = 1;
       let activeSouvenirGuide = "jewel";
+      const pageUrls = { home: "index.html", itinerary: "schedule.html", souvenirs: "gift.html", info: "guest.html" };
+      const pageByFile = { "index.html": "home", "schedule.html": "itinerary", "gift.html": "souvenirs", "guest.html": "info" };
+      const currentFile = window.location.pathname.split("/").pop() || "index.html";
+      const currentPage = pageByFile[currentFile] || "home";
 
       function slotList() {
         return Array.from({ length: 35 }, (_, index) => {
@@ -544,6 +548,14 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
+      function goToPage(name) {
+        if (name === currentPage) {
+          showView(name);
+          return;
+        }
+        window.location.href = pageUrls[name] || "index.html";
+      }
+
       function lockPassenger() {
         unlocked = false;
         document.querySelector("#locked").style.display = "grid";
@@ -556,9 +568,9 @@
         document.querySelector("#passenger-form").style.display = "block";
       }
 
-      document.querySelectorAll("[data-nav]").forEach(button => button.addEventListener("click", () => showView(button.dataset.nav)));
+      document.querySelectorAll("[data-nav]").forEach(button => button.addEventListener("click", () => goToPage(button.dataset.nav)));
       document.querySelectorAll("[data-scroll]").forEach(button => button.addEventListener("click", () => document.querySelector(`#${button.dataset.scroll}`).scrollIntoView({ behavior: "smooth" })));
-      document.querySelector("#header-lock").addEventListener("click", () => showView("info"));
+      document.querySelector("#header-lock").addEventListener("click", () => goToPage("info"));
       document.querySelector("#search").addEventListener("input", event => renderItinerary(event.target.value));
       document.querySelector("#unlock-form").addEventListener("submit", event => {
         event.preventDefault();
@@ -575,6 +587,7 @@
       renderFlights();
       renderItinerary();
       renderSouvenirs();
+      showView(currentPage);
     </script>
   </body>
 </html>
