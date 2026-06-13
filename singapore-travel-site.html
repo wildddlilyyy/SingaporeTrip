@@ -299,10 +299,25 @@
         {
           id: "dutyfree",
           title: "機場免稅店",
-          subtitle: "適合最後一天出境後採買香氛、美妝與精品型禮物；BR216 從樟宜 T3 出發，可優先看 T3 Transit 區。",
+          subtitle: "出境後逛 T3 Transit 區的快速攻略；BR216 從樟宜 T3 出發，先完成報到與安檢，再依登機門方向安排購物。",
+          map: true,
+          mapTips: [
+            "12:40 通過出境安檢後先確認登機門與步行時間。",
+            "13:10 先買 Bacha Coffee / TWG Tea 這類伴手禮，避免最後排隊。",
+            "13:50 再看 Shilla、Diptyque、DFS、LOTTE；液體、香水與酒類依登機限制現場確認。",
+            "14:50 前往登機門，免稅品整理進隨身行李。"
+          ],
           stores: [
-            { name: "Diptyque", category: "香氛", image: "images/04-01.jpg", reason: "巴黎香氛品牌，適合買淡香精、香氛蠟燭或小容量香氛作為正式禮物。", location: "樟宜機場免稅香氛/美妝通路；iShopChangi 可查 Diptyque 商品，實體櫃位以當日 T3 商店地圖為準。", route: "BR216 報到與出境安檢後，在 Terminal 3 Transit 區搜尋 Diptyque 或詢問 Shilla 美妝香氛櫃台。" },
-            { name: "The Shilla Duty Free", category: "美妝香氛", image: "images/04-02.jpg", reason: "樟宜機場主要美妝香氛免稅通路，適合買保養品、彩妝、香水與品牌套組。", location: "Cosmetics & Perfumes by Shilla Duty Free；樟宜機場 T1/T2/T3/T4 公共區與管制區多點設櫃。", route: "從 Terminal 3 出境安檢後，沿著 Transit 區商店指標找 Cosmetics & Perfumes by Shilla Duty Free。" }
+            { name: "Bacha Coffee", category: "咖啡、禮盒、掛耳包", image: "images/04-01.jpg", reason: "T3 有大型 Bacha Coffee 分店，適合買咖啡豆、掛耳包與禮盒。", location: "T3 Transit 區，出境安檢後依 Bacha Coffee / Coffee 指標或機場商店地圖前往。", route: "安檢後先確認登機門，再往中央商店區找 Bacha Coffee；建議第一站購買。" },
+            { name: "The Shilla Duty Free", category: "美妝、保養、香水", image: "images/04-02.jpg", reason: "美妝香氛免稅重點店，可看 SK-II、La Mer、Estée Lauder 等品牌。", location: "T3 Transit 區 Cosmetics & Perfumes by Shilla Duty Free。", route: "從中央免稅商店區沿 Cosmetics / Perfumes 指標走，適合安排在咖啡伴手禮之後。" },
+            { name: "Diptyque", category: "香氛、蠟燭、淡香精", image: "images/04-03.jpg", reason: "適合買正式一點的香氛禮物，小容量香水或蠟燭較好送人。", location: "T3 Transit 區香氛/美妝通路，實際櫃位以當日機場商店地圖為準。", route: "可先到 Shilla 美妝香氛區詢問 Diptyque 櫃位或商品位置。" },
+            { name: "TWG Tea", category: "茶葉、茶包、禮盒", image: "images/04-04.jpg", reason: "新加坡代表性茶品牌，包裝精緻，適合長輩或正式送禮。", location: "T3 Transit 區或 T3 相關茶葉/伴手禮商店；依現場商店地圖確認。", route: "與 Bacha Coffee 同屬伴手禮優先採買，建議排在前段時間。" },
+            { name: "Bengawan Solo", category: "斑蘭蛋糕、糕點", image: "images/04-05.jpg", reason: "新加坡特色手信，適合買斑蘭蛋糕或糕點。", location: "樟宜機場各航廈常見伴手禮店；T3 是否營業與位置以當日機場資訊為準。", route: "若想買糕點，先確認保存期限與是否可手提上機。" },
+            { name: "Irvins / Golden Duck", category: "鹹蛋魚皮、零食", image: "images/04-06.jpg", reason: "新加坡熱門零食伴手禮，適合買給同事或親友分送。", location: "T3 Transit 區零食/伴手禮通路，實際櫃位以機場商店地圖為準。", route: "若時間不多，零食類可在登機門附近便利通路補買。" },
+            { name: "Tiger Balm", category: "藥油、貼布、藥品伴手禮", image: "images/04-07.jpg", reason: "實用型伴手禮，可找虎標萬金油、頸肩舒與貼布等系列。", location: "T3 Transit 區藥妝/便利商店或免稅通路。", route: "可和 Shilla / 便利商店動線一起看，注意液體與膏狀容量。" },
+            { name: "DFS / T Galleria", category: "精品、包款、配件", image: "images/04-08.jpg", reason: "適合看國際精品、配件與旅行限定組合，購買前可比價促銷。", location: "T3 Transit 區精品免稅通路，依現場品牌櫃位為準。", route: "如果登機門較遠，精品區只保留 15-20 分鐘快速看重點。" },
+            { name: "LOTTE DUTY FREE", category: "酒類、菸品", image: "images/04-09.jpg", reason: "酒類與菸品免稅選擇多；購買前請確認台灣入境與航空攜帶限制。", location: "T3 Transit 區酒類/菸品免稅店。", route: "液體與酒類建議最後確認登機門與轉機限制後再買。" },
+            { name: "Charles & Keith", category: "包包、鞋、時尚配件", image: "images/04-10.jpg", reason: "新加坡品牌，適合買包款或小配件。", location: "T3 Transit 區或機場時尚配件通路，實際店位以當日機場商店地圖為準。", route: "適合在主要伴手禮買完後，留 10-15 分鐘快速挑選。" }
           ]
         }
       ];
@@ -472,15 +487,39 @@
               <h3>${guide.title}</h3>
               <p>${guide.subtitle}</p>
             </div>
-            <span class="pill">${isStoreGuide ? "2 家商店" : `Top ${entries.length}`}</span>
+            <span class="pill">Top ${entries.length}</span>
           </section>
+          ${guide.map ? `
+            <section class="card terminal-map-card">
+              <div class="terminal-map-copy">
+                <div class="muted">樟宜機場 Terminal 3 出境後示意圖</div>
+                <h3>BR216 出境後逛免稅店動線</h3>
+                <p>這是行程用的簡化示意圖，實際店位、登機門與營業狀態以樟宜機場現場螢幕和官方地圖為準。</p>
+              </div>
+              <div class="terminal-map" aria-label="樟宜機場 T3 免稅購物示意圖">
+                <div class="map-node checkin">T3 報到</div>
+                <div class="map-arrow">→</div>
+                <div class="map-node security">出境安檢</div>
+                <div class="map-arrow">→</div>
+                <div class="map-zone shops">
+                  <strong>T3 Transit 免稅商店區</strong>
+                  <span>Bacha Coffee · Shilla · TWG Tea · LOTTE</span>
+                </div>
+                <div class="map-arrow">→</div>
+                <div class="map-node gate">登機門</div>
+              </div>
+              <div class="map-tip-grid">
+                ${guide.mapTips.map((tip, index) => `<div class="map-tip"><strong>${index + 1}</strong><span>${tip}</span></div>`).join("")}
+              </div>
+            </section>
+          ` : ""}
           <section class="souvenir-grid">
             ${entries.map((product, index) => `
               <article class="card souvenir-card">
                 <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='images/madai.jpg';" />
                 <div class="souvenir-body">
                   <div class="souvenir-card-top">
-                    <span class="rank">${isStoreGuide ? "Store" : `No. ${index + 1}`}</span>
+                    <span class="rank">No. ${index + 1}</span>
                     <span class="tag">${product.category}</span>
                   </div>
                   <h3>${product.name}</h3>
