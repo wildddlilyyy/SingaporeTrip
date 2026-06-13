@@ -164,6 +164,13 @@
         { type: "回程", date: "2026/7/25", airline: "長榮航空", no: "BR216", from: "新加坡樟宜機場", fromCode: "SIN", fromTerminal: "T3", to: "桃園機場", toCode: "TPE", toTerminal: "T2", depart: "15:20", arrive: "20:00", duration: "04:40" }
       ];
 
+      const flightPassengers = [
+        { name: "Zhu, Lyusyun", seat: "62J", meal: "尚未找到選餐通知" },
+        { name: "Lin, Yichien", seat: "62H", meal: "尚未找到選餐通知" },
+        { name: "Zhu, Kaiwen", seat: "62G", meal: "尚未找到選餐通知" },
+        { name: "Zhu, Lyulin", seat: "62K", meal: "尚未找到選餐通知" }
+      ];
+
       const itinerary = [
         {
           day: 1,
@@ -332,6 +339,34 @@
               <div class="airport"><time>${flight.depart}</time><strong>${flight.fromCode}</strong><small>${flight.from}</small><span class="airport-terminal">${flight.fromTerminal}</span></div>
               <div class="flight-line"><span>${flight.duration}</span><div class="rule"></div></div>
               <div class="airport"><time>${flight.arrive}</time><strong>${flight.toCode}</strong><small>${flight.to}</small><span class="airport-terminal">${flight.toTerminal}</span></div>
+            </div>
+            <div class="seat-summary">
+              <div class="seat-copy">
+                <div class="muted">付費選位確認 · ${flight.no}</div>
+                <strong>第 62 排標準座位</strong>
+                <p>四位旅客去回程座位相同；請於航班起飛前 48 小時至 1 小時內完成報到，避免預選座位被取消。</p>
+              </div>
+              <div class="seat-map" aria-label="第 62 排座位示意圖">
+                <div class="seat-row-label">62 排</div>
+                <div class="seat-block">
+                  <span class="seat selected">G</span>
+                  <span class="seat selected">H</span>
+                </div>
+                <div class="aisle">走道</div>
+                <div class="seat-block">
+                  <span class="seat selected">J</span>
+                  <span class="seat selected">K</span>
+                </div>
+              </div>
+            </div>
+            <div class="passenger-seat-grid">
+              ${flightPassengers.map(passenger => `
+                <div class="passenger-seat">
+                  <span>${passenger.name}</span>
+                  <strong>${passenger.seat}</strong>
+                  <small>選餐：${passenger.meal}</small>
+                </div>
+              `).join("")}
             </div>
           </article>
         `).join("");

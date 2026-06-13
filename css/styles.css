@@ -331,6 +331,105 @@
         transform: translate(-50%, -50%);
       }
 
+      .seat-summary {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+
+      .seat-copy strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 16px;
+      }
+
+      .seat-copy p {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .seat-map {
+        display: grid;
+        grid-template-columns: auto 1fr auto 1fr;
+        align-items: center;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid rgba(139, 92, 246, 0.18);
+        border-radius: 14px;
+        background: #e7effd;
+      }
+
+      .seat-row-label,
+      .aisle {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .seat-block {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(34px, 1fr));
+        gap: 6px;
+      }
+
+      .seat {
+        display: grid;
+        min-height: 34px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--surface-strong);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .seat.selected {
+        border-color: rgba(13, 148, 136, 0.42);
+        background: rgba(13, 148, 136, 0.14);
+        color: var(--secondary);
+      }
+
+      .passenger-seat-grid {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .passenger-seat {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 4px 10px;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        background: var(--surface-strong);
+      }
+
+      .passenger-seat span {
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .passenger-seat strong {
+        color: var(--primary-2);
+        font-size: 14px;
+      }
+
+      .passenger-seat small {
+        grid-column: 1 / -1;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
       .hotel-card {
         overflow: hidden;
       }
@@ -895,6 +994,15 @@
         }
 
         .fields.two {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .seat-summary {
+          grid-template-columns: 1fr minmax(280px, 0.8fr);
+          align-items: center;
+        }
+
+        .passenger-seat-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
