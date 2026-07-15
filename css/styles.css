@@ -872,6 +872,107 @@
         line-height: 1.55;
       }
 
+      .boarding-hero {
+        display: grid;
+        gap: 16px;
+        margin-bottom: 16px;
+        padding: 18px;
+      }
+
+      .boarding-hero h3 {
+        margin: 3px 0 6px;
+        font-size: 24px;
+      }
+
+      .boarding-hero p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.65;
+      }
+
+      .boarding-route {
+        display: grid;
+        gap: 7px;
+        padding: 14px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.14), rgba(13, 148, 136, 0.12));
+      }
+
+      .boarding-route span {
+        color: var(--primary-2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .boarding-route strong {
+        font-size: 15px;
+      }
+
+      .boarding-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .boarding-card {
+        padding: 18px;
+      }
+
+      .boarding-card-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .boarding-card-head span {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--primary-2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .boarding-card h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .boarding-card ul {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .warning-card {
+        border-color: rgba(179, 38, 30, 0.22);
+        background: linear-gradient(180deg, #fff2f2, var(--surface));
+      }
+
+      .warning-card .boarding-card-head span {
+        background: #ffe0df;
+        color: #b3261e;
+      }
+
+      .boarding-links {
+        margin-top: 16px;
+        padding: 18px;
+      }
+
+      .boarding-links h3 {
+        margin: 0 0 14px;
+      }
+
       .lock-wrap {
         display: grid;
         min-height: 68vh;
@@ -1105,6 +1206,15 @@
         }
 
         .passenger-seat-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .boarding-hero {
+          grid-template-columns: 1fr minmax(260px, 0.7fr);
+          align-items: center;
+        }
+
+        .boarding-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
