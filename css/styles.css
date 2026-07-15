@@ -955,13 +955,13 @@
       }
 
       .warning-card {
-        border-color: rgba(179, 38, 30, 0.22);
-        background: linear-gradient(180deg, #fff2f2, var(--surface));
+        border-color: rgba(236, 72, 153, 0.38);
+        background: linear-gradient(180deg, #ffe4f1, #fff4fa 62%, var(--surface));
       }
 
       .warning-card .boarding-card-head span {
-        background: #ffe0df;
-        color: #b3261e;
+        background: #ffb8dc;
+        color: #be185d;
       }
 
       .boarding-links {
@@ -1165,7 +1165,7 @@
         }
 
         .quick-grid {
-          grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         .content-grid,
@@ -1212,10 +1212,6 @@
         .boarding-hero {
           grid-template-columns: 1fr minmax(260px, 0.7fr);
           align-items: center;
-        }
-
-        .boarding-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .map-tip-grid {
