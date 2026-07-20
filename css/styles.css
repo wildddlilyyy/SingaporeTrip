@@ -667,6 +667,13 @@
         font-weight: 900;
       }
 
+      .day-title-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 14px;
+      }
+
       .event-actions {
         display: flex;
         flex-wrap: wrap;
@@ -674,23 +681,39 @@
         margin-top: 10px;
       }
 
-      .event-link {
+      .event-link,
+      .schedule-map-link {
+        appearance: none;
+        border: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 34px;
-        padding: 0 11px;
+        min-height: 36px;
+        padding: 0 13px;
         border-radius: 9px;
         background: var(--primary);
-        color: white;
+        color: #fff;
+        font-family: inherit;
         font-size: 12px;
         font-weight: 900;
+        line-height: 1;
         text-decoration: none;
         box-shadow: 0 8px 18px rgba(139, 92, 246, 0.22);
+        cursor: pointer;
       }
 
-      .event-link:hover {
+      .event-link:hover,
+      .schedule-map-link:hover {
         background: var(--primary-2);
+        color: #fff;
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+
+      .event-link:visited,
+      .schedule-map-link:visited {
+        color: #fff;
+        text-decoration: none;
       }
 
       .souvenir-intro {

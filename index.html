@@ -523,6 +523,10 @@
         });
 
         const day = itinerary.find(item => item.day === activeItineraryDay) || itinerary[0];
+        const parkMapLinks = {
+          2: [{ label: "新加坡動物園地圖", href: "https://www.mandai.com/content/dam/mandai/singapore-zoo/park-map/sz-zh-map.pdf" }],
+          3: [{ label: "飛禽公園地圖", href: "https://www.mandai.com/content/dam/mandai/bird-paradise/park-map/bp-zh-map.pdf" }]
+        };
         const dayEvents = lower
           ? day.events.filter(event => [event.label, event.desc, event.location, event.note].some(value => value && value.toLowerCase().includes(lower)))
           : day.events;
@@ -582,6 +586,11 @@
                 <div class="muted">Day ${day.day}</div>
                 <h3>${day.date} 星期${day.weekday}</h3>
                 <div class="muted">${day.title}</div>
+                ${parkMapLinks[day.day] ? `
+                  <div class="day-title-actions">
+                    ${parkMapLinks[day.day].map(link => `<a class="schedule-map-link" href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join("")}
+                  </div>
+                ` : ""}
               </div>
               ${blocks}
             </section>
