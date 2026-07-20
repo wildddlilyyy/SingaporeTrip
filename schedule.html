@@ -662,8 +662,8 @@
           ` : ""}
           <section class="souvenir-grid">
             ${entries.map((product, index) => `
-              <article class="card souvenir-card">
-                <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='images/madai.jpg';" />
+              <article class="card souvenir-card ${guide.id === "convenience" ? "souvenir-card-text-only" : ""}">
+                ${guide.id !== "convenience" ? `<img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='images/madai.jpg';" />` : ""}
                 <div class="souvenir-body">
                   <div class="souvenir-card-top">
                     <span class="rank">No. ${index + 1}</span>
