@@ -682,6 +682,7 @@
       }
 
       .event-link,
+      .schedule-ticket-link,
       .schedule-map-link {
         appearance: none;
         border: 0;
@@ -702,7 +703,13 @@
         cursor: pointer;
       }
 
+      .schedule-ticket-link {
+        background: #23354D;
+        box-shadow: 0 8px 18px rgba(35, 53, 77, 0.22);
+      }
+
       .event-link:hover,
+      .schedule-ticket-link:hover,
       .schedule-map-link:hover {
         background: var(--primary-2);
         color: #fff;
@@ -710,7 +717,12 @@
         transform: translateY(-1px);
       }
 
+      .schedule-ticket-link:hover {
+        background: #1b293c;
+      }
+
       .event-link:visited,
+      .schedule-ticket-link:visited,
       .schedule-map-link:visited {
         color: #fff;
         text-decoration: none;

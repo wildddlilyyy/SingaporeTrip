@@ -526,6 +526,13 @@
           2: [{ label: "新加坡動物園地圖", href: "https://www.mandai.com/content/dam/mandai/singapore-zoo/park-map/sz-zh-map.pdf" }],
           3: [{ label: "飛禽公園地圖", href: "https://www.mandai.com/content/dam/mandai/bird-paradise/park-map/bp-zh-map.pdf" }]
         };
+        const ticketLinks = {
+          2: [{ label: "新加坡動物園門票", href: "documents/singapore-zoo-ticket-20260723.pdf" }],
+          3: [
+            { label: "飛禽公園門票", href: "documents/bird-paradise-ticket-20260724.pdf" },
+            { label: "好奇心之灣門票", href: "documents/mandai-ticket-meifiaqogt.pdf" }
+          ]
+        };
         const dayEvents = lower
           ? day.events.filter(event => [event.label, event.desc, event.location, event.note].some(value => value && value.toLowerCase().includes(lower)))
           : day.events;
@@ -591,8 +598,9 @@
                 <div class="muted">Day ${day.day}</div>
                 <h3>${day.date} 星期${day.weekday}</h3>
                 <div class="muted">${day.title}</div>
-                ${parkMapLinks[day.day] ? `
+                ${(ticketLinks[day.day] || parkMapLinks[day.day]) ? `
                   <div class="day-title-actions">
+                    ${(ticketLinks[day.day] || []).map(link => `<a class="schedule-ticket-link" href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join("")}
                     ${parkMapLinks[day.day].map(link => `<a class="schedule-map-link" href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join("")}
                   </div>
                 ` : ""}
