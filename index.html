@@ -547,27 +547,33 @@
             });
 
             const rows = slots.map(slot => {
-              const event = dayEvents.find(item => item.time === slot);
-              if (!event && lower) return "";
+              const slotStart = toHour(slot);
+              const slotEnd = slotStart + 0.5;
+              const events = dayEvents.filter(item => {
+                const eventStart = toHour(item.time);
+                return eventStart >= slotStart && eventStart < slotEnd;
+              });
+              if (!events.length && lower) return "";
+              const eventCards = events.map(event => `
+                <article class="event">
+                  <h4>${event.label}</h4>
+                  <p>${event.desc}</p>
+                  <div class="event-meta">
+                    <span class="meta">${event.time}${event.end ? ` - ${event.end}` : ""}</span>
+                    ${event.location ? `<span class="meta">${event.location}</span>` : ""}
+                    ${event.note ? `<span class="meta">${event.note}</span>` : ""}
+                  </div>
+                  ${event.links ? `
+                    <div class="event-actions">
+                      ${event.links.map(link => `<a class="event-link" href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join("")}
+                    </div>
+                  ` : ""}
+                </article>
+              `).join("");
               return `
                 <div class="slot">
                   <div class="time">${slot}</div>
-                  ${event ? `
-                    <article class="event">
-                      <h4>${event.label}</h4>
-                      <p>${event.desc}</p>
-                      <div class="event-meta">
-                        <span class="meta">${event.time}${event.end ? ` - ${event.end}` : ""}</span>
-                        ${event.location ? `<span class="meta">${event.location}</span>` : ""}
-                        ${event.note ? `<span class="meta">${event.note}</span>` : ""}
-                      </div>
-                      ${event.links ? `
-                        <div class="event-actions">
-                          ${event.links.map(link => `<a class="event-link" href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join("")}
-                        </div>
-                      ` : ""}
-                    </article>
-                  ` : `<div class="empty">空白時段</div>`}
+                  ${events.length ? eventCards : `<div class="empty">空白時段</div>`}
                 </div>
               `;
             }).join("");
