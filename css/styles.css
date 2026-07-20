@@ -667,6 +667,32 @@
         font-weight: 900;
       }
 
+      .event-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .event-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 0 11px;
+        border-radius: 9px;
+        background: var(--primary);
+        color: white;
+        font-size: 12px;
+        font-weight: 900;
+        text-decoration: none;
+        box-shadow: 0 8px 18px rgba(139, 92, 246, 0.22);
+      }
+
+      .event-link:hover {
+        background: var(--primary-2);
+      }
+
       .souvenir-intro {
         display: flex;
         align-items: flex-start;
